@@ -1,0 +1,1365 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'none'; connect-src 'none'; font-src 'none'; base-uri 'none'; form-action 'none'">
+<title>Kessler Syndrome Primer · Mission decision workbook</title>
+<style>
+:root{--navy:#1B1E3E;--blue:#1D3052;--steel:#37596E;--gold:#E3C170;--ink:#202832;--paper:#fff;--wash:#F2F5F7;--line:#B8C5CE;--softgold:#FFF6DF;--success:#205641;--focus:#125AB3}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:auto}
+body{margin:0;color:var(--ink);background:var(--wash);font:1rem/1.55 system-ui,-apple-system,"Segoe UI",Arial,sans-serif;overflow-wrap:break-word}
+button,input,select{font:inherit}
+button,summary,a,input,select{touch-action:manipulation}
+button{max-width:100%;min-height:46px;padding:.65rem 1rem;border:1px solid var(--steel);border-radius:6px;color:var(--blue);background:var(--paper);font-weight:650;cursor:pointer;white-space:normal;line-height:1.3}
+button:hover:not(:disabled){background:var(--softgold)}
+button.primary{background:var(--blue);color:white;border-color:var(--blue)}
+button.primary:hover:not(:disabled){background:var(--steel)}
+button.gold{background:var(--gold);color:var(--navy)}
+button:disabled{cursor:not-allowed;color:#53616C;background:#E8EDF0;border-color:var(--line)}
+button.quiet{border-color:transparent;text-decoration:underline;text-underline-offset:.2em;background:transparent}
+a{color:var(--blue);text-underline-offset:.2em}
+:focus-visible{outline:3px solid var(--focus);outline-offset:4px}
+[tabindex="-1"]:focus{outline:2px solid var(--focus);outline-offset:5px}
+h1,h2,h3,h4{color:var(--navy);line-height:1.25;margin:0 0 .7rem}
+h1{font-size:clamp(1.55rem,5vw,2.15rem);letter-spacing:-.02em}
+h2{font-size:1.2rem;margin-top:1.6rem}
+h3{font-size:1.05rem;margin-top:1.1rem}
+h4{font-size:1rem;margin-top:1rem}
+p{margin:0 0 1rem}p:last-child{margin-bottom:0}
+ul,ol{padding-left:1.35rem}li+li{margin-top:.55rem}
+.small{font-size:.88rem}.muted{color:var(--steel)}
+.eyebrow{color:var(--steel);font-size:.78rem;font-weight:750;letter-spacing:.07em;text-transform:uppercase;margin-bottom:.5rem}
+.skip{position:absolute;left:1rem;top:-6rem;z-index:10;background:white;padding:.8rem}
+.skip:focus{top:1rem}
+.wrap{max-width:800px;margin:0 auto;padding:0 1.25rem}
+.sitehead{background:var(--navy);color:white;border-bottom:4px solid var(--gold);padding:1.05rem 0}
+.sitehead .brand{font-size:.72rem;letter-spacing:.1em;color:var(--gold)}
+.sitehead .module{font-size:1.15rem;font-weight:700;margin:.15rem 0}
+.sitehead .edition{font-size:.84rem;color:#D9E3EA}
+.tracker{padding:1rem 0 .4rem}
+.milestones{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.35rem;margin:0;padding:0;list-style:none}
+.milestones li{margin:0;border-top:3px solid var(--line);padding:.45rem .25rem;font-size:.79rem;color:var(--steel)}
+.milestones strong{display:block;font-size:.86rem;color:var(--blue)}
+.milestones .current{border-color:var(--gold);background:var(--softgold)}
+.milestones .complete{border-color:var(--steel)}
+.toplinks{display:flex;flex-wrap:wrap;gap:.35rem;margin:.6rem 0 .4rem}
+main{padding:1.25rem 0 2rem;min-height:40vh}
+.sheet{background:var(--paper);border:1px solid var(--line);border-radius:10px;padding:clamp(1rem,3.5vw,1.65rem);margin:1.1rem 0}
+.sheet:first-child{margin-top:0}
+.sheet>h2:first-child,.sheet>h3:first-child{margin-top:0}
+.lead{display:flex;align-items:flex-start;gap:.7rem;margin:1rem 0}
+.lead>div{min-width:0;flex:1}.lead p{margin:0}.lead .voice{display:block;font-size:.76rem;font-weight:750;color:var(--steel);margin-bottom:.15rem}
+.guideicon{position:relative;flex:0 0 34px;width:34px;height:34px;background:var(--blue);border:2px solid var(--gold);border-radius:50%;overflow:hidden;margin-top:.2rem}
+.guideicon:before{content:"";position:absolute;width:10px;height:12px;left:10px;top:4px;background:white;border-radius:50%}
+.guideicon:after{content:"";position:absolute;left:4px;top:18px;width:22px;height:18px;border:2px solid white;border-radius:50% 50% 0 0}
+.goal{border-left:4px solid var(--gold);padding:.8rem 1rem;background:var(--softgold);margin:1rem 0}
+.objectives{margin-bottom:0}.objectives li{padding-left:.25rem}
+.report{margin:1.2rem 0;border:1px solid var(--line);border-radius:8px;background:white;overflow:hidden}
+.reporthead{padding:.8rem 1rem;background:var(--blue);color:white;display:flex;justify-content:space-between;align-items:center;gap:.8rem;flex-wrap:wrap}
+.reporthead h2,.reporthead h3{color:white;margin:0;font-size:1.02rem}.reporthead small{display:block;color:#D9E3EA;margin-bottom:.2rem}
+.clock{font-size:.78rem;text-align:right}.clock strong{display:block;color:var(--gold);font-size:1.15rem;font-variant-numeric:tabular-nums}
+dl{margin:0}.report dl>div{padding:.65rem 1rem;border-bottom:1px solid #D9E1E6}.report dl>div:nth-child(even){background:var(--wash)}.report dl>div:last-child{border-bottom:0}
+dt{font-size:.86rem;font-weight:750;color:var(--steel)}dd{margin:.1rem 0 0}
+.terms{font-size:.85rem;color:var(--steel);margin:.5rem 0 1rem}
+details{border:1px solid var(--line);border-radius:6px;margin:1rem 0;background:white}
+summary{min-height:46px;padding:.65rem .9rem;font-weight:650;color:var(--blue);cursor:pointer}
+summary:hover{background:var(--softgold)}.detailbody{padding:.3rem 1rem 1rem}.detailbody h3:first-child{margin-top:.5rem}
+/* Each diagram step keeps its heading, illustration and explanation together. */
+.causal{margin:1rem 0;padding:0;list-style:none}.causal li{display:grid;grid-template-columns:128px minmax(0,1fr);grid-template-areas:"art heading" "art explanation";column-gap:1rem;row-gap:.2rem;align-items:center;margin:0;padding:.8rem 0;border-bottom:1px solid #D9E1E6}.causal li:last-child{border-bottom:0}
+.causal svg{grid-area:art;display:block;width:128px;max-width:100%;height:auto;aspect-ratio:136/82;border:1px solid var(--line);border-radius:6px;background:white}
+.causal strong{grid-area:heading;display:block;min-width:0;align-self:end;color:var(--blue)}.causal p{grid-area:explanation;min-width:0;align-self:start;margin:0;font-size:.93rem}
+figure{margin:1rem 0}figcaption{font-size:.84rem;color:var(--steel)}
+.casecard{border-top:4px solid var(--steel)}.casecard h2{margin:.55rem 0}
+.status{display:inline-block;border:1px solid var(--steel);background:var(--wash);border-radius:4px;padding:.15rem .55rem;font-size:.82rem;font-weight:650;color:var(--blue)}
+.status.needs{background:var(--softgold);border-color:#947439;color:#624A1F}
+.task{margin-top:1.25rem;padding-top:.2rem}.task>h2{margin-top:0}
+fieldset{border:0;padding:0;margin:0 0 1.3rem;min-width:0}
+legend{padding:0;width:100%;font-weight:700;color:var(--blue);margin-bottom:.3rem;font-size:1.05rem}
+.choice{display:flex;gap:.65rem;align-items:flex-start;min-height:48px;padding:.75rem;border:1px solid var(--line);border-radius:6px;margin:.5rem 0;cursor:pointer;background:white}
+.choice:hover{border-color:var(--steel)}.choice:has(input:checked){background:#EDF2F6;border-color:var(--blue);box-shadow:inset 0 0 0 1px var(--blue)}
+.choice input{flex:0 0 19px;width:19px;height:19px;margin:.15rem 0 0;accent-color:var(--blue)}
+.choice span{min-width:0;flex:1}.choice strong{color:var(--blue)}
+.match{display:block;margin:.8rem 0 1.25rem;font-weight:650;color:var(--blue)}
+select{display:block;width:100%;max-width:100%;min-height:48px;border:1px solid var(--steel);border-radius:5px;padding:.65rem;margin:.4rem 0 0;background:white;color:var(--ink);font-weight:400}
+.matchoptions{font-size:.92rem;padding:1rem;background:var(--wash);border-radius:5px}
+.feedback{border-left:4px solid var(--steel);background:var(--wash);padding:1rem;margin:1.2rem 0}
+.feedback.needs{border-left-color:#987434;background:var(--softgold)}
+.feedback h2,.feedback h3{margin-top:0}
+.original{margin:.6rem 0 1rem;border-bottom:1px solid var(--line);padding-bottom:.85rem}.original p{margin:.35rem 0 0}
+.part+.part{border-top:1px solid var(--line);padding-top:1rem;margin-top:1rem}
+.part h3{margin-top:0}.part p:last-child{margin-bottom:0}
+.actions{display:flex;justify-content:space-between;gap:.65rem;align-items:center;flex-wrap:wrap;margin:1.1rem 0 0}.actions .end{margin-left:auto}
+.helper{font-size:.86rem;color:var(--steel);margin-top:.5rem}
+.error{padding:.65rem .8rem;background:var(--softgold);border-left:4px solid #947439;margin:.7rem 0;color:#624A1F;font-weight:600}
+.reviewnav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem;margin:1.2rem 0}.reviewnav button{padding:.6rem .25rem;min-width:0}.reviewnav strong,.reviewnav small{display:block}.reviewnav small{font-weight:400;font-size:.76rem;margin-top:.2rem}
+.reviewnav [aria-current="step"]{border:2px solid var(--blue);background:#EDF2F6}
+.score{font-size:1.9rem;font-weight:750;color:var(--navy);line-height:1.2;display:block;margin:.3rem 0}
+.pointmap{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:.4rem;font-size:.88rem;margin:1rem 0}.pointmap>div{padding:.65rem;border:1px solid var(--line);border-radius:5px}.pointmap strong,.pointmap span{display:block}.pointmap .double{border:2px solid var(--steel)}
+.practiceintro{background:var(--softgold);border:1px solid #B39859;border-left:4px solid var(--gold);padding:1rem;margin-top:1.2rem}.practiceintro h3{margin-top:0}
+.reviewfooter{border-top:1px solid var(--line);padding-top:1rem;margin-top:1.7rem}
+.namefield{display:block;font-weight:650;margin:1.2rem 0}.namefield input{display:block;width:100%;min-height:48px;border:1px solid var(--steel);border-radius:5px;padding:.65rem;margin-top:.4rem;background:white}
+.certificate{border:3px double var(--steel);background:white;text-align:center;padding:clamp(1rem,4vw,2rem);margin:1.5rem 0;break-inside:avoid}
+.certificate h2{margin:.8rem 0;font-size:1.5rem}.certificate .person{font-size:1.4rem;font-weight:650;overflow-wrap:anywhere}.certificate .qualifier{border-top:1px solid var(--line);padding-top:1rem;margin-top:1.1rem;font-size:.92rem}
+footer.sitefoot{border-top:1px solid var(--line);padding:1rem 0 2rem}.sitefoot details{font-size:.9rem}
+#saveStatus{font-size:.82rem;color:var(--steel);padding:.3rem 0}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+#printArea{display:none}
+@media(min-width:600px){.report dl>div{display:grid;grid-template-columns:145px minmax(0,1fr);gap:.6rem}.report dd{margin:0}}
+/* On phones, show a full-width illustration between the heading and explanation. */
+@media(max-width:640px){.causal li{grid-template-columns:minmax(0,1fr);grid-template-areas:"heading" "art" "explanation";gap:.6rem;align-items:start;padding:1rem 0}.causal svg{width:100%;max-width:22rem;justify-self:center}}
+@media(max-width:420px){.wrap{padding:0 .85rem}.sheet{padding:1rem}.pointmap{grid-template-columns:1fr 1fr}.reviewnav{grid-template-columns:1fr 1fr}.actions button{flex:1 1 auto}.clock{text-align:left}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@media print{@page{margin:18mm;size:portrait}body{background:white}body>*{display:none!important}#printArea{display:block!important}.certificate{margin:0;color:black}.certificate h2{color:black}}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to learning activity</a>
+<header class="sitehead"><div class="wrap"><div class="brand">MONOLITH LEARNING SYSTEMS</div><div class="module">Kessler Syndrome Primer</div><div class="edition">Mission decision workbook</div></div></header>
+<div class="wrap"><div id="tracking" class="tracker" aria-label="Learning progress"></div><nav id="toplinks" class="toplinks" aria-label="Workbook navigation"></nav><main id="main" tabindex="-1"></main></div>
+<footer class="sitefoot"><div class="wrap">
+  <p id="saveStatus" role="status" aria-live="polite"></p>
+  <details id="help"><summary>Help and saved progress</summary><div class="detailbody">
+    <h2>Using this workbook</h2><p>Work at your own pace. Select one recommendation and one reason, then submit them together. You can change selections before submitting. Afterwards, your answers stay available for review.</p>
+    <p>Use Tab to move between controls, arrow keys within radio groups, and Space to select. The report stays in the page above each task. There is no response timer.</p>
+    <h2>Assessment and review</h2><p>There are four questions worth five points. Question 2 has two one-point parts. Feedback appears after all four questions are submitted. Next review moves between question reviews; practice uses separate Start practice and Check answer buttons.</p>
+    <h2>Saving on this device</h2><p>This file works without a connection. When browser storage is available, it saves your selections and progress on this device. Reopen the same file in the same browser to try resuming. Moving the file, clearing browser data, or using another device may make that saved progress unavailable. Nothing is sent to a server.</p>
+    <p>If saving is unavailable, keep the tab open until you finish. Refreshing or closing it may lose your progress.</p>
+    <button type="button" data-act="reset-request">Clear progress and start over</button>
+    <div id="resetConfirm" hidden class="feedback needs"><p>This removes this workbook’s saved progress and starts a new attempt. Your current answers and certificate will be cleared.</p><div class="actions"><button type="button" data-act="reset-cancel">Keep my progress</button><button type="button" data-act="reset-confirm">Clear and start over</button></div></div>
+  </div></details>
+  <p class="small muted">Developed by Monolith Learning Systems · Introductory learning, not operational qualification.</p>
+</div></footer>
+<section id="printArea" aria-hidden="true"></section>
+<div id="live" class="sr-only" aria-live="polite" role="status"></div>
+<noscript><div class="wrap sheet"><h1>JavaScript is needed for this workbook</h1><p>Open this HTML file in a browser with JavaScript enabled to use its decisions, feedback, and assessment. No internet connection is needed.</p></div></noscript>
+<script>
+"use strict";
+/* Kessler Syndrome M5 prototype 02: larger phone diagrams; content and logic unchanged.
+   Authoritative source: McCoy_LDT504_M5_Low_Bandwidth_Design_Spec_v03_Prototype_Baseline.md.
+   Content records and keys are editable in DATA below. Correctness is disclosed
+   in the interface only after the specified submission gates, not secured from
+   source inspection. No external requests, assets, or libraries are used. */
+const DATA = {
+  "goal": "Evaluate immediate debris risks and recommend basic protection for spacecraft and crew from cascading debris collisions.",
+  "objectives": [
+    "Identify an accurate description of Kessler Syndrome and its consequences for space operations.",
+    "Identify signs of debris risk in the information provided.",
+    "Select basic protection that fits the mission information and constraints.",
+    "Select the reason that correctly connects a protective response to the debris risk."
+  ],
+  "core": "A collision can create fragments that remain in orbit. Even small fragments can cause severe damage at orbital speeds. Remaining fragments can hit other objects and create additional debris, increasing later collision risk. This cascading process can affect spacecraft, crew safety, communications, navigation, and access to orbit. Another collision is possible, not certain or necessarily immediate. Avoiding one encounter does not remove the remaining debris.",
+  "model": "LYRA-1 is a crewed research mission in low Earth orbit. Systems are normal. Observation OBS-A moved to a later time, but the earlier debris assessment covered only its original time. Updated analysis is available before the team must decide whether to proceed.",
+  "modelReason": "OBS-A's schedule changed, and its earlier assessment doesn't cover the new time. I'd request updated analysis before deciding whether it should proceed. The schedule change doesn't prove the observation unsafe; it tells us the revised plan still needs assessment.",
+  "role": "You’re the Mission Control Officer for LYRA-1, a fictional crewed research mission. You recommend responses. The mission team evaluates the findings and authorizes operational actions under established procedures.",
+  "reports": {
+    "c1": {
+      "title": "LYRA-1 · The emerging alert",
+      "time": "09:00",
+      "rows": [
+        [
+          "Possible encounter",
+          "A possible close approach during pass P-17 is flagged for 12:00."
+        ],
+        [
+          "Uncertainty",
+          "Tracking is incomplete. No protective response has been evaluated."
+        ],
+        [
+          "Review times",
+          "Focused review can start at 09:20. Routine tracking arrives at 10:30."
+        ],
+        [
+          "Observation",
+          "OBS-A is scheduled for 11:40 and can be postponed."
+        ],
+        [
+          "Current status",
+          "Crew and spacecraft systems are normal."
+        ]
+      ]
+    },
+    "c2": {
+      "title": "LYRA-1 · A protective response",
+      "time": "10:00",
+      "rows": [
+        [
+          "Current flight plan",
+          "Focused review is complete. Collision risk during P-17 remains unresolved on the current flight plan."
+        ],
+        [
+          "Evaluated option",
+          "Avoidance option AV-1 is predicted to reduce that risk within spacecraft constraints."
+        ],
+        [
+          "Decision timing",
+          "AV-1 must be selected by 10:15. Routine tracking arrives at 10:30."
+        ],
+        [
+          "Mission effects",
+          "AV-1 postpones OBS-A. Crew preparation alone leaves the flight plan unchanged and does not reduce collision risk."
+        ],
+        [
+          "Current status",
+          "Crew and spacecraft systems are normal."
+        ]
+      ]
+    },
+    "c3": {
+      "title": "LYRA-1 · Mission continuation",
+      "time": "13:10",
+      "rows": [
+        [
+          "Immediate encounter",
+          "A protective response has resolved the immediate concern about P-17."
+        ],
+        [
+          "Observation",
+          "OBS-B is approved for 13:40 under the latest debris assessment."
+        ],
+        [
+          "Later risk",
+          "Debris remains. Analysts are reviewing later pass P-18."
+        ],
+        [
+          "Follow-up",
+          "The next update is at 14:15. Reassess activities affected by changed forecasts."
+        ],
+        [
+          "Current status",
+          "Crew and spacecraft systems are normal."
+        ]
+      ]
+    },
+    "update": {
+      "title": "LYRA-1 · Updated report",
+      "time": "13:25",
+      "rows": [
+        [
+          "Changed forecast",
+          "The forecast now identifies collision risk during OBS-B. Its earlier approval no longer applies."
+        ],
+        [
+          "Analysis available",
+          "No response has been evaluated for this change. Focused reassessment is available now."
+        ],
+        [
+          "Observation and routine work",
+          "OBS-B can be postponed. Routine operations remain approved under their existing assessment."
+        ],
+        [
+          "Current status",
+          "P-17 remains resolved. No new collision is recorded. Crew and spacecraft systems remain normal."
+        ]
+      ]
+    },
+    "a1": {
+      "title": "Assessment report A",
+      "time": "07:20",
+      "rows": [
+        [
+          "Possible encounter",
+          "Possible close approach P-24 is forecast during observation OBS-C."
+        ],
+        [
+          "Tracking",
+          "Tracking information about this encounter is uncertain."
+        ],
+        [
+          "Current status",
+          "Crew and spacecraft systems are normal."
+        ],
+        [
+          "Collision record",
+          "No new collision has been recorded since the original debris-producing event."
+        ]
+      ]
+    },
+    "a2": {
+      "title": "Assessment report B",
+      "time": "",
+      "rows": [
+        [
+          "Earlier assessment",
+          "AV-2 was predicted to lower risk for a 10:20 encounter. Earlier times were not assessed."
+        ],
+        [
+          "New tracking",
+          "The encounter is now forecast for 09:58."
+        ],
+        [
+          "Decision timing",
+          "Focused analysis can finish by 09:47. The decision is due at 09:50. Routine tracking arrives at 10:10."
+        ],
+        [
+          "Shared preparations",
+          "Every option includes postponing OBS-C and preparing the crew. These preparations do not reduce collision risk during the encounter."
+        ]
+      ]
+    },
+    "a3": {
+      "title": "Assessment report C",
+      "time": "",
+      "rows": [
+        [
+          "Immediate encounter",
+          "LYRA-1 avoided its immediate encounter."
+        ],
+        [
+          "Remaining debris",
+          "Collision fragments remain in a region used by other spacecraft."
+        ],
+        [
+          "Collision record",
+          "No further collision is confirmed."
+        ]
+      ]
+    },
+    "a4": {
+      "title": "Assessment report D",
+      "time": "16:10",
+      "rows": [
+        [
+          "Immediate encounter",
+          "P-31 is no longer an immediate concern."
+        ],
+        [
+          "Observation",
+          "OBS-D is approved for 16:30 under the latest debris assessment."
+        ],
+        [
+          "Later pass",
+          "Review P-32 before the next activity it could affect."
+        ],
+        [
+          "Follow-up",
+          "Reassess activities when forecasts change."
+        ],
+        [
+          "Current status",
+          "Crew and spacecraft systems are normal."
+        ]
+      ]
+    }
+  },
+  "cases": [
+    {
+      "id": "c1",
+      "title": "The emerging alert",
+      "prompt": "What do you recommend now?",
+      "actions": [
+        [
+          "A",
+          "Keep routine monitoring until the scheduled update."
+        ],
+        [
+          "B",
+          "Request focused review and notify the crew."
+        ],
+        [
+          "C",
+          "Request an immediate avoidance maneuver based on the alert."
+        ]
+      ],
+      "outcomes": {
+        "A": "The team waits for the 10:30 routine update instead of starting focused review at 09:20. This postpones investigation and leaves less preparation and decision time before the possible close approach at 12:00. Waiting does not itself cause a collision.",
+        "B": "Review starts at 09:20 and the crew is notified. No maneuver is executed yet. Findings inform subsequent operational authorization.",
+        "C": "The request is returned for evaluation rather than executed. Its protective effect has not been established; it is not automatically ineffective."
+      },
+      "reasons": [
+        [
+          "R1",
+          "Normal crew and systems show the predicted encounter is not a threat."
+        ],
+        [
+          "R2",
+          "A possible encounter is enough reason to maneuver because changing the flight plan will reduce collision risk."
+        ],
+        [
+          "R3",
+          "Incomplete tracking and the absence of an evaluated response justify focused review before choosing protection."
+        ]
+      ],
+      "actionKey": "B",
+      "reasonKey": "R3",
+      "reasonFeedback": {
+        "R1": "Normal crew and systems describe the spacecraft’s condition now. They do not rule out a threat during the forecast encounter.",
+        "R2": "An alert is a reason to investigate. It does not establish that a particular maneuver will reduce collision risk.",
+        "R3": "Incomplete tracking and no evaluated response leave important information unresolved. Focused review examines it before the team chooses protection."
+      }
+    },
+    {
+      "id": "c2",
+      "title": "A protective response",
+      "prompt": "Which protective response do you recommend?",
+      "actions": [
+        [
+          "A",
+          "Recommend AV-1 and postpone OBS-A."
+        ],
+        [
+          "B",
+          "Prepare the crew and keep the flight plan."
+        ],
+        [
+          "C",
+          "Wait for routine tracking before changing the plan."
+        ]
+      ],
+      "outcomes": {
+        "A": "The team authorizes AV-1 and postpones the observation. The analysis predicts lower collision risk, not guaranteed safety.",
+        "B": "Crew readiness improves; collision risk remains unresolved on the unchanged plan.",
+        "C": "The AV-1 decision deadline passes at 10:15, before routine tracking arrives at 10:30. Waiting loses that evaluated option within the stated decision window."
+      },
+      "reasons": [
+        [
+          "R1",
+          "Crew preparation resolves collision risk while preserving the flight plan and observation schedule."
+        ],
+        [
+          "R2",
+          "AV-1 reduces predicted collision risk within the decision window, and OBS-A can be postponed."
+        ],
+        [
+          "R3",
+          "Waiting keeps AV-1 available because routine tracking arrives before the decision is due."
+        ]
+      ],
+      "actionKey": "A",
+      "reasonKey": "R2",
+      "reasonFeedback": {
+        "R1": "Preparing the crew improves readiness. It does not reduce collision risk on the unchanged flight plan.",
+        "R2": "AV-1 is predicted to reduce risk within the decision window. Postponing OBS-A allows AV-1 to be used; postponement itself does not reduce encounter risk.",
+        "R3": "The AV-1 decision is due at 10:15. The 10:30 update arrives too late to keep that option available."
+      }
+    },
+    {
+      "id": "c3",
+      "title": "Mission continuation",
+      "prompt": "What do you recommend for mission continuation?",
+      "actions": [
+        [
+          "A",
+          "Resume OBS-B and end additional debris review."
+        ],
+        [
+          "B",
+          "Keep observations paused until another tracking update."
+        ],
+        [
+          "C",
+          "Resume OBS-B, continue monitoring, and reassess activities affected by changed forecasts."
+        ]
+      ],
+      "outcomes": {
+        "A": "The approved observation resumes, but required later-pass review stops. Resolving P-17 does not remove debris or resolve P-18.",
+        "B": "The approved OBS-B opportunity is lost. Uncertainty about P-18 does not cancel OBS-B's separate assessment.",
+        "C": "The approved observation resumes while later-pass review continues. Its approval is specific, not a clearance for every future activity."
+      },
+      "reasons": [
+        [
+          "R1",
+          "OBS-B is approved; later passes still require monitoring and reassessment."
+        ],
+        [
+          "R2",
+          "Resolving P-17 means collision fragments no longer threaten the mission, so review can end."
+        ],
+        [
+          "R3",
+          "Uncertainty about later passes cancels OBS-B's separate approval, so observations must remain paused."
+        ]
+      ],
+      "actionKey": "C",
+      "reasonKey": "R1",
+      "reasonFeedback": {
+        "R1": "OBS-B has a separate approval, while later pass P-18 still needs review. Continuing this observation does not end monitoring of later risk.",
+        "R2": "Resolving P-17 does not remove the remaining fragments. Later debris risk still needs review.",
+        "R3": "Uncertainty about P-18 does not cancel the separate assessment approving OBS-B."
+      }
+    }
+  ],
+  "checks": [
+    {
+      "type": "multi",
+      "report": "c1",
+      "prompt": "Which two details justify focused review?",
+      "options": [
+        [
+          "A",
+          "A possible close approach is flagged for the upcoming pass."
+        ],
+        [
+          "B",
+          "Crew and systems are normal."
+        ],
+        [
+          "C",
+          "Tracking is incomplete and no protective response has been evaluated."
+        ],
+        [
+          "D",
+          "The observation has not yet been postponed."
+        ]
+      ],
+      "key": [
+        "A",
+        "C"
+      ]
+    },
+    {
+      "type": "match",
+      "report": "c2",
+      "prompt": "Match each response with its effect. You may use an effect more than once.",
+      "rows": [
+        "Authorize AV-1 and postpone OBS-A.",
+        "Prepare the crew without changing the plan.",
+        "Wait for routine tracking at 10:30."
+      ],
+      "options": [
+        [
+          "X",
+          "Reduce predicted collision risk and postpone the observation."
+        ],
+        [
+          "Y",
+          "Improve readiness while collision risk remains unresolved."
+        ],
+        [
+          "Z",
+          "Lose the evaluated avoidance option before the update arrives."
+        ]
+      ],
+      "key": [
+        "X",
+        "Y",
+        "Z"
+      ],
+      "why": [
+        "AV-1 is predicted to reduce collision risk, and using it postpones OBS-A.",
+        "Crew preparation improves readiness but leaves collision risk unresolved on the unchanged flight plan.",
+        "The 10:15 AV-1 deadline passes before the 10:30 routine tracking update arrives."
+      ]
+    },
+    {
+      "type": "single",
+      "report": "update",
+      "prompt": "Which recommendation fits this update?",
+      "options": [
+        [
+          "A",
+          "Continue OBS-B because P-17 is resolved and systems are normal."
+        ],
+        [
+          "B",
+          "Pause OBS-B and routine operations because the changed forecast also withdraws the basis for routine work."
+        ],
+        [
+          "C",
+          "Postpone OBS-B for reassessment and continue routine work, which remains approved."
+        ]
+      ],
+      "key": "C",
+      "why": {
+        "A": "The new forecast withdraws the earlier approval for OBS-B. Resolving P-17 and having normal systems do not rule out this new risk.",
+        "B": "Postponing OBS-B fits the update. Pausing routine work does not: that work remains approved under its separate assessment.",
+        "C": "Postpone the affected observation for reassessment while separately approved routine work continues."
+      }
+    }
+  ],
+  "debrief": "incomplete evidence supported focused review; an evaluated option with an open decision window supported protection; a separately approved activity could continue while later risk remained under review. A changed forecast required reassessment of the affected observation.",
+  "assessment": [
+    {
+      "type": "multi",
+      "prompt": "Which two details justify focused review?",
+      "options": [
+        [
+          "A",
+          "The possible close approach is forecast during the observation."
+        ],
+        [
+          "B",
+          "Spacecraft systems are currently normal."
+        ],
+        [
+          "C",
+          "Tracking information about the encounter is still uncertain."
+        ],
+        [
+          "D",
+          "No new collision has been recorded since the original debris-producing event."
+        ]
+      ],
+      "key": [
+        "A",
+        "C"
+      ],
+      "slots": [
+        0
+      ],
+      "report": "a1",
+      "title": "Identify risk evidence"
+    },
+    {
+      "type": "pair",
+      "prompt": "What do you recommend now?",
+      "actions": [
+        [
+          "A",
+          "Recommend AV-2 based on its earlier evaluation."
+        ],
+        [
+          "B",
+          "Request focused reassessment before choosing a protective response."
+        ],
+        [
+          "C",
+          "Wait for routine tracking before choosing a protective response."
+        ]
+      ],
+      "reasons": [
+        [
+          "R1",
+          "AV-2's earlier evaluation supports using it at the changed encounter time while updated analysis continues."
+        ],
+        [
+          "R2",
+          "Postponing the observation reduces collision risk, so the team can wait for routine tracking before choosing protection."
+        ],
+        [
+          "R3",
+          "Focused reassessment can check AV-2 for the changed time before the decision deadline; its earlier evaluation did not cover that time."
+        ]
+      ],
+      "actionKey": "B",
+      "reasonKey": "R3",
+      "slots": [
+        1,
+        2
+      ],
+      "report": "a2",
+      "title": "Recommend and explain"
+    },
+    {
+      "type": "single",
+      "prompt": "Which explanation fits the continuing risk?",
+      "options": [
+        [
+          "A",
+          "Remaining fragments can strike other objects and create more debris, increasing later risk even though no further collision is confirmed."
+        ],
+        [
+          "B",
+          "With no further collision confirmed, later assessments can assume no added risk from cascading collisions."
+        ],
+        [
+          "C",
+          "LYRA-1's successful avoidance establishes adequate protection for other spacecraft and later activities."
+        ]
+      ],
+      "key": "A",
+      "slots": [
+        3
+      ],
+      "report": "a3",
+      "title": "Explain continuing risk"
+    },
+    {
+      "type": "single",
+      "prompt": "Which recommendation fits the updated assessment?",
+      "options": [
+        [
+          "A",
+          "Continue OBS-D and review P-32 before the next activity it could affect. OBS-D is approved, but the later pass still needs review."
+        ],
+        [
+          "B",
+          "Hold OBS-D until P-32 is assessed because uncertainty about that later pass overrides the separate observation approval."
+        ],
+        [
+          "C",
+          "Continue OBS-D and end targeted monitoring because resolving the immediate encounter provides enough assurance for the rest of the mission."
+        ]
+      ],
+      "key": "A",
+      "slots": [
+        4
+      ],
+      "report": "a4",
+      "title": "Reconsider continuation"
+    }
+  ],
+  "review": [
+    {
+      "label": "Question 1",
+      "title": "Identify risk evidence",
+      "q": 0,
+      "field": "selected",
+      "correct": "You identified the forecast encounter and uncertain tracking. Together, they call for focused review.",
+      "why": "A possible encounter is forecast during OBS-C, and the tracking is uncertain. Those two details call for focused review.",
+      "specific": {
+        "B": "Normal systems describe present condition. They do not rule out risk during the forecast encounter.",
+        "D": "The collision record describes past events. It does not rule out a future collision."
+      }
+    },
+    {
+      "label": "2A · Recommendation",
+      "title": "Choose the next step",
+      "q": 1,
+      "field": "action",
+      "correct": "You requested focused reassessment that can finish by 09:47, before the 09:50 decision.",
+      "why": "Focused reassessment can check protection for the changed encounter time before the decision is due.",
+      "specific": {
+        "A": "The evaluation for 10:20 does not cover 09:58. It does not yet establish that AV-2 fits the changed encounter.",
+        "C": "The 10:10 routine update arrives after the 09:50 decision. Focused analysis is available before that deadline."
+      }
+    },
+    {
+      "label": "2B · Reasoning",
+      "title": "Explain reassessment",
+      "q": 1,
+      "field": "reason",
+      "correct": "You recognized that the earlier evaluation did not cover 09:58 and that reassessment can finish before the decision.",
+      "why": "The changed time needs reassessment. That may still support AV-2; the time change does not prove it ineffective.",
+      "specific": {
+        "R1": "The 10:20 evaluation does not establish suitability for the new encounter time of 09:58.",
+        "R2": "The shared preparations do not reduce encounter collision risk. They do not justify waiting for an update that arrives after the decision deadline."
+      }
+    },
+    {
+      "label": "Question 3",
+      "title": "Recognize continuing risk",
+      "q": 2,
+      "field": "selected",
+      "correct": "You recognized that fragments remain after one encounter is avoided. Later collisions can create more debris.",
+      "why": "Avoiding one encounter does not remove the fragments that can strike other objects and create more debris.",
+      "specific": {
+        "B": "No further collision is confirmed, but that does not establish stable future risk.",
+        "C": "LYRA-1’s avoidance does not establish protection for other spacecraft or later activities."
+      }
+    },
+    {
+      "label": "Question 4",
+      "title": "Continue with appropriate review",
+      "q": 3,
+      "field": "selected",
+      "correct": "You distinguished the approved OBS-D observation from P-32, which still needs review.",
+      "why": "OBS-D has its own approval. P-32 must still be reviewed before the next activity it could affect, and changed forecasts require reassessment.",
+      "specific": {
+        "B": "Uncertainty about P-32 does not cancel OBS-D’s separate approval.",
+        "C": "Resolving P-31 does not justify ending review of later risk."
+      }
+    }
+  ],
+  "practice": [
+    {
+      "type": "single",
+      "prompt": "Which pair of facts explains why OBS-C needs focused review?",
+      "options": [
+        [
+          "A",
+          "Normal crew condition and no new recorded collision."
+        ],
+        [
+          "B",
+          "A possible close approach during OBS-C and uncertain tracking."
+        ],
+        [
+          "C",
+          "A planned observation and normally functioning systems."
+        ]
+      ],
+      "key": "B",
+      "report": "a1",
+      "purpose": "Your original answer did not identify both risk details. Practice distinguishing forecast risk from present condition and past events.",
+      "feedback": {
+        "A": "Those facts describe present condition and past events. Look for the forecast concern and the uncertain information.",
+        "B": "Correct. The possible close approach affects OBS-C, and uncertain tracking calls for focused review.",
+        "C": "A schedule and normal systems do not identify the debris concern. Look for the possible encounter and uncertain tracking."
+      }
+    },
+    {
+      "type": "single",
+      "prompt": "Which next step uses analysis available before the protective decision is due?",
+      "options": [
+        [
+          "A",
+          "Select AV-2 using the evaluation for 10:20."
+        ],
+        [
+          "B",
+          "Wait for routine tracking at 10:10."
+        ],
+        [
+          "C",
+          "Request focused reassessment that can finish by 09:47."
+        ]
+      ],
+      "key": "C",
+      "report": "a2",
+      "purpose": "Your original recommendation did not fit the report. Practice choosing a next step that can inform the decision in time.",
+      "feedback": {
+        "A": "The evaluation for 10:20 does not cover the new 09:58 encounter. Compare the analysis time with the 09:50 decision.",
+        "B": "Routine tracking at 10:10 arrives after the 09:50 decision. Look for analysis available before that deadline.",
+        "C": "Correct. Focused reassessment can finish by 09:47, before the 09:50 decision."
+      }
+    },
+    {
+      "type": "single",
+      "prompt": "Why must AV-2 be evaluated again after the forecast changes from 10:20 to 09:58?",
+      "options": [
+        [
+          "A",
+          "Its earlier evaluation did not cover the new encounter time."
+        ],
+        [
+          "B",
+          "Any changed encounter time proves an avoidance option ineffective."
+        ],
+        [
+          "C",
+          "Postponing OBS-C removes the need for protection."
+        ]
+      ],
+      "key": "A",
+      "report": "a2",
+      "purpose": "Your original reason did not fit the report. Practice identifying why the new encounter time needs reassessment.",
+      "feedback": {
+        "A": "Correct. The earlier evaluation does not cover the new time. Reassessment may still support AV-2.",
+        "B": "Changed timing calls for reassessment; it does not prove AV-2 ineffective.",
+        "C": "Postponing OBS-C does not reduce encounter risk. Check which time the AV-2 evaluation covered."
+      }
+    },
+    {
+      "type": "single",
+      "prompt": "What can happen after LYRA-1 avoids its immediate encounter?",
+      "options": [
+        [
+          "A",
+          "Remaining fragments can strike other objects and create more debris."
+        ],
+        [
+          "B",
+          "Debris risk ends because LYRA-1 avoided a collision."
+        ],
+        [
+          "C",
+          "Risk must remain unchanged because no further collision is confirmed."
+        ]
+      ],
+      "key": "A",
+      "report": "a3",
+      "purpose": "Your original answer did not account for the remaining debris. Practice explaining why risk can continue.",
+      "feedback": {
+        "A": "Correct. Fragments remain after avoidance and can create more debris through later collisions.",
+        "B": "Avoidance addresses that encounter. It does not remove the remaining debris.",
+        "C": "No further collision is confirmed, but that does not establish unchanged future risk."
+      }
+    },
+    {
+      "type": "single",
+      "prompt": "What is still required while approved OBS-D continues?",
+      "options": [
+        [
+          "A",
+          "Hold OBS-D until every later pass has been assessed."
+        ],
+        [
+          "B",
+          "Review P-32 before the next affected activity and reassess changed forecasts."
+        ],
+        [
+          "C",
+          "End targeted monitoring because P-31 is resolved."
+        ]
+      ],
+      "key": "B",
+      "report": "a4",
+      "purpose": "Your original recommendation did not fit the report. Practice distinguishing the approved observation from later risk.",
+      "feedback": {
+        "A": "OBS-D has its own approval. Later uncertainty does not cancel that separate assessment.",
+        "B": "Correct. Keep the later-pass review and reassess changed forecasts while the approved observation continues.",
+        "C": "Resolving P-31 does not settle later risk. P-32 still needs review."
+      }
+    }
+  ]
+};
+
+/* State contains answers, acknowledgements and practice attempts, not saved scores. */
+const STORAGE_KEY="mccoy-kessler-m5-v03-workbook";
+const SCHEMA=1;
+const $=id=>document.getElementById(id);
+const esc=x=>String(x??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const para=x=>`<p>${esc(x)}</p>`;
+const clone=x=>JSON.parse(JSON.stringify(x));
+const inOptions=(opts,value)=>opts.some(([id])=>id===value);
+const choiceText=(opts,id)=>opts.find(o=>o[0]===id)?.[1]||"";
+const sameSet=(a,b)=>Array.isArray(a)&&a.length===b.length&&new Set(a).size===a.length&&a.every(x=>b.includes(x));
+const emptyAnswer=q=>q.type==="pair"?{action:"",reason:""}:q.type==="multi"?[]:q.type==="match"?["","",""]:"";
+const isObject=x=>x!==null&&typeof x==="object"&&!Array.isArray(x);
+function initialState(){
+  return {
+    page:"prepare",briefingDone:false,caseIndex:0,
+    cases:DATA.cases.map((c,i)=>({draft:{action:"",reason:""},decision:null,feedbackRead:false,checkDraft:emptyAnswer(DATA.checks[i]),check:null,done:false})),
+    debriefDone:false,examStarted:false,examIndex:0,
+    exam:DATA.assessment.map(()=>null),examDraft:DATA.assessment.map(emptyAnswer),
+    reviewIndex:0,reviewSeen:[false,false,false,false],reviewDone:[false,false,false,false],
+    practice:DATA.practice.map(()=>({draft:"",attempts:[]})),practiceVisible:[false,false,false,false],practiceIndex:[null,null,null,null],
+    name:"",completedAt:null
+  };
+}
+let S=initialState();
+let storageOK=false,pendingResume=null,invalidSave=false;
+let errorText="";
+function fixedAnswer(x){if(Array.isArray(x)||isObject(x))return Object.freeze(clone(x));return x;}
+function allCases(s=S){return s.cases.every(c=>c.done);}
+function allExam(s=S){return s.exam.every(a=>a!==null);}
+function componentScores(s=S){
+  return DATA.assessment.flatMap((q,i)=>{
+    const a=s.exam[i];
+    if(a===null)return q.slots.map(()=>null);
+    if(q.type==="pair")return [Number(a.action===q.actionKey),Number(a.reason===q.reasonKey)];
+    return [Number(q.type==="multi"?sameSet(a,q.key):a===q.key)];
+  });
+}
+function totalScore(){return componentScores().reduce((n,v)=>n+(v??0),0);}
+function needed(i,s=S){const scores=componentScores(s);return DATA.assessment[i].slots.filter(k=>scores[k]===0);}
+function passed(k,s=S){const a=s.practice[k].attempts;return a.length>0&&a[a.length-1]===DATA.practice[k].key;}
+function pending(i,s=S){return needed(i,s).filter(k=>!passed(k,s));}
+function allPractice(s=S){return allExam(s)&&DATA.practice.every((q,k)=>componentScores(s)[k]!==0||passed(k,s));}
+function readyReview(i,s=S){return allExam(s)&&s.reviewSeen[i]&&pending(i,s).length===0;}
+function reviewsComplete(s=S){return allExam(s)&&s.reviewDone.every(Boolean)&&allPractice(s);}
+function completionEligible(s=S){return s.briefingDone&&allCases(s)&&s.debriefDone&&reviewsComplete(s);}
+function validAnswer(q,a,draft=false){
+  const allowed=(opts,v)=>typeof v==="string"&&((draft&&v==="")||inOptions(opts,v));
+  if(q.type==="pair")return isObject(a)&&allowed(q.actions,a.action)&&allowed(q.reasons,a.reason);
+  if(q.type==="multi")return Array.isArray(a)&&a.length<=(draft?4:2)&&(draft||a.length===2)&&new Set(a).size===a.length&&a.every(v=>allowed(q.options,v));
+  if(q.type==="match")return Array.isArray(a)&&a.length===3&&a.every(v=>allowed(q.options,v));
+  return allowed(q.options,a);
+}
+function validateState(s){
+  /* Reject inconsistent completion or malformed data rather than invent progress.
+     This is recovery validation, not a secure/proctored assessment system. */
+  try{
+    const bool=x=>typeof x==="boolean",idx=(n,max)=>Number.isInteger(n)&&n>=0&&n<=max;
+    const bool4=a=>Array.isArray(a)&&a.length===4&&a.every(bool);
+    const pairq=c=>({type:"pair",actions:c.actions,reasons:c.reasons});
+    const pages=["prepare","cases","case","debrief","assessment","review","closing","certificate"];
+    if(!isObject(s)||!pages.includes(s.page)||!bool(s.briefingDone)||!idx(s.caseIndex,2)||!idx(s.examIndex,3)||!idx(s.reviewIndex,3))return false;
+    if(!bool(s.debriefDone)||!bool(s.examStarted)||s.debriefDone!==s.examStarted)return false;
+    if(!Array.isArray(s.cases)||s.cases.length!==3||!Array.isArray(s.exam)||s.exam.length!==4||!Array.isArray(s.examDraft)||s.examDraft.length!==4)return false;
+    if(!bool4(s.reviewSeen)||!bool4(s.reviewDone)||!bool4(s.practiceVisible))return false;
+    if(!Array.isArray(s.practice)||s.practice.length!==5||!Array.isArray(s.practiceIndex)||s.practiceIndex.length!==4)return false;
+    if(typeof s.name!=="string"||s.name.length>80)return false;
+    if(s.completedAt!==null&&(typeof s.completedAt!=="string"||!Number.isFinite(Date.parse(s.completedAt))))return false;
+    for(let i=0;i<3;i++){
+      const c=s.cases[i];
+      if(!isObject(c)||!bool(c.feedbackRead)||!bool(c.done)||!validAnswer(pairq(DATA.cases[i]),c.draft,true)||!validAnswer(DATA.checks[i],c.checkDraft,true))return false;
+      if(c.decision!==null&&!validAnswer(pairq(DATA.cases[i]),c.decision))return false;
+      if(c.check!==null&&!validAnswer(DATA.checks[i],c.check))return false;
+      if((c.feedbackRead&&c.decision===null)||(c.check!==null&&!c.feedbackRead)||(c.done&&c.check===null))return false;
+      if(!s.briefingDone&&(c.decision!==null||c.feedbackRead||c.check!==null||c.done||c.draft.action||c.draft.reason))return false;
+    }
+    if(s.examStarted&&(!s.briefingDone||!allCases(s)))return false;
+    let gap=false;
+    for(let i=0;i<4;i++){
+      if(!validAnswer(DATA.assessment[i],s.examDraft[i],true))return false;
+      if(s.exam[i]===null)gap=true;
+      else if(gap||!s.examStarted||!validAnswer(DATA.assessment[i],s.exam[i]))return false;
+      if(i<s.examIndex&&s.exam[i]===null)return false;
+      if(i>s.examIndex&&s.exam[i]!==null)return false;
+    }
+    const scores=componentScores(s);
+    for(let k=0;k<5;k++){
+      const p=s.practice[k],q=DATA.practice[k];
+      if(!isObject(p)||typeof p.draft!=="string"||(p.draft&&!inOptions(q.options,p.draft))||!Array.isArray(p.attempts)||p.attempts.length>10000||!p.attempts.every(v=>inOptions(q.options,v)))return false;
+      const hit=p.attempts.indexOf(q.key);
+      if(hit!==-1&&hit!==p.attempts.length-1)return false;
+      if((p.attempts.length||p.draft)&&(!allExam(s)||scores[k]!==0||!s.reviewSeen[DATA.review[k].q]))return false;
+    }
+    for(let i=0;i<4;i++){
+      if(s.reviewSeen[i]&&!allExam(s))return false;
+      if(s.reviewDone[i]&&!readyReview(i,s))return false;
+      const pi=s.practiceIndex[i];
+      if(pi!==null&&(!Number.isInteger(pi)||!needed(i,s).includes(pi)))return false;
+      if(s.practiceVisible[i]&&(!s.reviewSeen[i]||pi===null))return false;
+    }
+    if(s.completedAt!==null&&!completionEligible(s))return false;
+    if(s.page!=="prepare"&&!s.briefingDone)return false;
+    if(s.page==="debrief"&&!allCases(s))return false;
+    if(s.page==="assessment"&&!s.examStarted)return false;
+    if(s.page==="review"&&!allExam(s))return false;
+    if((s.page==="closing"||s.page==="certificate")&&!completionEligible(s))return false;
+    if(s.page==="certificate"&&s.completedAt===null)return false;
+    if(s.examStarted&&!reviewsComplete(s)&&!["assessment","review"].includes(s.page))return false;
+    return true;
+  }catch(e){return false;}
+}
+function freezeOriginals(){
+  S.cases.forEach(c=>{if(c.decision!==null)c.decision=fixedAnswer(c.decision);if(c.check!==null)c.check=fixedAnswer(c.check);});
+  S.exam=S.exam.map(a=>a===null?null:fixedAnswer(a));
+}
+function storageMessage(){
+  $("saveStatus").textContent=storageOK
+    ?"Progress saving is available in this browser. Saved work stays on this device."
+    :"This browser is not saving progress. Keep this tab open; closing or refreshing it may lose your work.";
+}
+function save(){
+  if(!storageOK||pendingResume)return;
+  try{
+    const text=JSON.stringify({schema:SCHEMA,savedAt:new Date().toISOString(),data:S});
+    localStorage.setItem(STORAGE_KEY,text);
+    if(localStorage.getItem(STORAGE_KEY)!==text)throw new Error("Storage verification failed");
+  }catch(e){storageOK=false;storageMessage();}
+}
+function checkSaved(){
+  try{
+    const key=STORAGE_KEY+"-probe";
+    localStorage.setItem(key,"ok");
+    if(localStorage.getItem(key)!=="ok")throw new Error("Storage unavailable");
+    localStorage.removeItem(key);storageOK=true;
+    const raw=localStorage.getItem(STORAGE_KEY);
+    if(raw){
+      try{const obj=JSON.parse(raw);if(obj.schema===SCHEMA&&validateState(obj.data))pendingResume=obj.data;else invalidSave=true;}
+      catch(e){invalidSave=true;}
+    }
+  }catch(e){storageOK=false;}
+  storageMessage();
+}
+function announce(text){$("live").textContent=text;}
+function focusTo(id){
+  requestAnimationFrame(()=>{
+    const el=$(id);if(!el)return;
+    el.focus({preventScroll:true});
+    el.scrollIntoView({block:"start",behavior:"auto"});
+    window.scrollBy(0,-16);
+  });
+}
+function button(label,act,attrs="",cls=""){return `<button type="button" data-act="${act}" ${attrs} class="${cls}">${label}</button>`;}
+function guide(text){return `<aside class="lead" aria-label="Mission lead"><span class="guideicon" aria-hidden="true"></span><div><span class="voice">MISSION LEAD</span>${para(text)}</div></aside>`;}
+function report(id,prefix="Current report",old=false){
+  const r=DATA.reports[id];
+  return `<section class="report" aria-label="${esc(prefix)}: ${esc(r.title)}">
+    <header class="reporthead"><div><small>${esc(prefix)}</small><h2>${esc(r.title)}</h2></div>${r.time?`<div class="clock">Mission time<strong>${r.time}</strong></div>`:""}</header>
+    <dl>${r.rows.map(([label,text])=>`<div><dt>${esc(label)}</dt><dd>${esc(text)}</dd></div>`).join("")}</dl>
+  </section>`;
+}
+function diagram(){
+  const frag=`<path d="M0 0H13V5H8V15H0Z" fill="#E3C170" stroke="#1D3052" stroke-width="1.8"/>`;
+  const bits=`<path d="M18 13l5 2-2 5-5-2z M87 12l5 3-3 5-5-3z M91 60l6 2-2 5-6-2z" fill="#37596E"/>`;
+  const pics=[
+    `<rect x="24" y="31" width="24" height="20" fill="#1D3052" transform="rotate(15 36 41)"/><rect x="50" y="30" width="20" height="18" fill="#37596E" transform="rotate(-20 60 39)"/><path d="M47 23l5 10 10-2-7 9 8 6-11 1-3 10-4-10-10-3 9-5z" fill="#E3C170" stroke="#1D3052"/>${bits}<g transform="translate(94 32)">${frag}</g><text x="112" y="44" font-size="15" fill="#1D3052">F</text>`,
+    `<g transform="translate(26 31)">${frag}</g><text x="13" y="41" font-size="15" fill="#1D3052">F</text><rect x="88" y="29" width="27" height="24" rx="2" fill="#37596E"/>`,
+    `<rect x="75" y="29" width="27" height="24" rx="2" fill="#37596E"/><path d="M67 24l6 11 10-2-7 10 9 7-12 1-5 10-4-12-11-5 10-6z" fill="#FFF6DF" stroke="#1D3052"/><g transform="translate(60 34)">${frag}</g><text x="42" y="46" font-size="15" fill="#1D3052">F</text>${bits}<path d="M18 58l5 3-3 6-5-3z M112 16l5 2-2 5-5-2z M108 60l6 2-2 5-6-2z" fill="#37596E"/>`
+  ];
+  const labels=[['1. A collision creates fragments','The notched fragment is labeled F.'],['2. Fragments remain in orbit','Fragment F can encounter another object.'],['3. A later collision can add debris','Another impact can create more fragments and increase later risk.']];
+  return `<figure aria-label="How collision debris can lead to further collisions"><ol class="causal">${labels.map(([title,text],i)=>`<li><strong>${title}</strong><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 136 82" aria-hidden="true">${pics[i]}</svg>${para(text)}</li>`).join("")}</ol><figcaption>The same notched fragment, F, appears throughout. This is a possible sequence, not an immediate or certain cascade. Conceptual diagram, not a forecast or scale model.</figcaption></figure>`;
+}
+function reference(){
+  return `<details><summary>Reference: debris risk and report terms</summary><div class="detailbody"><h3>How the risk continues</h3>${para(DATA.core)}${diagram()}
+    <h3>Read the report</h3><p><strong>OBS</strong> identifies an observation. <strong>AV</strong> identifies an avoidance option. <strong>P</strong> identifies a pass.</p><p>A <strong>focused review</strong> examines a specific debris concern. <strong>Reassessment</strong> revisits the evidence after conditions change. Mission times describe the scenario, not a response timer.</p>
+    <h3>Use the evidence</h3><p>What is the concern? Has the response been evaluated for these conditions? Is there time to act? Does an earlier assessment still cover the activity?</p></div></details>`;
+}
+function fieldOptions(q,value,name,legend){
+  const arr=Array.isArray(value)?value:[value];
+  return `<fieldset><legend>${esc(legend||q.prompt)}</legend>${q.options.map(([id,text])=>`<label class="choice"><input type="${q.type==="multi"?"checkbox":"radio"}" name="${name}" value="${id}" ${arr.includes(id)?"checked":""}><span><strong>${id}.</strong> ${esc(text)}</span></label>`).join("")}</fieldset>`;
+}
+function answerInputs(q,value,assessment=false){
+  if(q.type==="pair")return `${fieldOptions({type:"single",options:q.actions},value.action,"action",assessment?"2A · Recommendation · 1 point":"Your recommendation")}${fieldOptions({type:"single",options:q.reasons},value.reason,"reason",assessment?"2B · Reasoning · 1 point":"Choose the supported reason")}`;
+  if(q.type==="match")return `<div class="matchoptions" aria-label="Effects">${q.options.map(([id,text])=>`<p><strong>${id}.</strong> ${esc(text)}</p>`).join("")}</div>${q.rows.map((text,i)=>`<label class="match">${i+1}. ${esc(text)}<select name="row${i}" aria-label="Effect for response ${i+1}: ${esc(text)}"><option value="">Choose an effect</option>${q.options.map(([id])=>`<option value="${id}" ${value[i]===id?"selected":""}>Effect ${id}</option>`).join("")}</select></label>`).join("")}`;
+  return fieldOptions(q,value,"selected");
+}
+function answerForm(q,draft,kind,label="Submit response",assessment=false){
+  return `<form id="answerForm" data-kind="${kind}" novalidate aria-describedby="answerInstructions formError">
+    <p id="answerInstructions" class="small muted">${q.type==="pair"?"Choose one recommendation and one reason. Submit both together; you can edit either before submitting.":q.type==="multi"?"Select exactly two details.":q.type==="match"?"Choose one effect for each response. Effects may be reused.":"Choose one answer."}</p>
+    ${answerInputs(q,draft,assessment)}
+    <p id="formError" class="error" role="alert" tabindex="-1" ${errorText?"":"hidden"}>${esc(errorText)}</p>
+    ${q.type==="multi"?`<p id="selectionCount" class="helper" role="status">${draft.length} of 2 selected.</p>`:""}
+    <div class="actions"><button type="submit" class="primary">${label}</button></div>
+  </form>`;
+}
+function original(q,answer,label="Your original answer"){
+  const opts=q.options||[];
+  return `<div class="original"><strong>${esc(label)}</strong>${(Array.isArray(answer)?answer:[answer]).map(id=>para(id+". "+choiceText(opts,id))).join("")}</div>`;
+}
+function pairQuestion(c){return {type:"pair",actions:c.actions,reasons:c.reasons};}
+function caseFeedback(i){
+  const c=DATA.cases[i],a=S.cases[i].decision;
+  const ao=a.action===c.actionKey,ro=a.reason===c.reasonKey;
+  const mismatch=ao&&!ro?"Your recommendation fits the report, but your reason does not. Review which evidence supports that recommendation.":!ao&&ro?"Your reason fits the report, but your recommendation does not follow it. Use that reason to reconsider the action.":"";
+  return `<section aria-label="Your decision and feedback">
+    <div class="feedback ${ao?"":"needs"}"><h3>Your recommendation · ${ao?"Supported":"Needs review"}</h3>${para(choiceText(c.actions,a.action))}<h4>What happens next</h4>${para(c.outcomes[a.action])}</div>
+    <div class="feedback ${ro?"":"needs"}"><h3>Your reasoning · ${ro?"Supported":"Needs review"}</h3>${para(choiceText(c.reasons,a.reason))}<h4>Evidence check</h4>${para(c.reasonFeedback[a.reason])}</div>${mismatch?`<p class="goal">${esc(mismatch)}</p>`:""}
+  </section>`;
+}
+function checkFeedback(i){
+  const q=DATA.checks[i],a=S.cases[i].check;
+  if(q.type==="multi"){
+    const n=a.filter(x=>q.key.includes(x)).length;
+    const wrong=a.filter(x=>!q.key.includes(x));
+    return `${original(q,a,"Your selections")}<section class="feedback ${n===2?"":"needs"}"><h3>${n} of 2 relevant details identified</h3><p>${n===2?"Correct. ":"The supported pair is A and C. "}The possible encounter and unresolved tracking and protection information call for focused review.</p>${wrong.includes('B')?"<p>Normal crew and systems describe the spacecraft now; they do not establish protection during the encounter.</p>":""}${wrong.includes('D')?"<p>The observation schedule describes planned work; it does not establish protection during the encounter.</p>":""}</section>`;
+  }
+  if(q.type==="match"){
+    const n=a.filter((x,k)=>x===q.key[k]).length;
+    return `<section class="feedback ${n===3?"":"needs"}"><h3>${n} of 3 matches correct</h3>${q.rows.map((row,k)=>`<div class="part"><h4>${k+1}. ${esc(row)}</h4><p><strong>Your match:</strong> ${esc(choiceText(q.options,a[k]))}</p>${a[k]!==q.key[k]?`<p><strong>Correct match:</strong> ${esc(choiceText(q.options,q.key[k]))}</p>`:""}${para(q.why[k])}</div>`).join("")}</section>`;
+  }
+  return `${original(q,a,"Your answer")}<section class="feedback ${a===q.key?"":"needs"}"><h3>${a==="C"?"Correct":a==="B"?"Partly correct":"Reconsider the changed report"}</h3>${para(q.why[a])}${a!==q.key?`<p><strong>Supported answer C:</strong> ${esc(choiceText(q.options,"C"))}</p>`:""}</section>`;
+}
+function scoreMap(){return `<div class="pointmap" aria-label="Four questions worth five points"><div><strong>Question 1</strong><span>1 point</span></div><div class="double"><strong>Question 2</strong><span>2A: 1 point</span><span>2B: 1 point</span></div><div><strong>Question 3</strong><span>1 point</span></div><div><strong>Question 4</strong><span>1 point</span></div></div>`;}
+/* Workspaces, not a slide-by-slide player. */
+function viewPrepare(){
+  return `<p class="eyebrow">Prepare for the mission cases</p><h1 id="viewTitle" tabindex="-1">Read the evidence. Recommend a response.</h1>
+    ${invalidSave?`<p class="error" role="alert">Saved progress could not be verified. This attempt starts from the beginning.</p>`:""}
+    ${guide(DATA.role)}
+    <p>This primer prepares you for deeper instruction and simulation. It is not an operational manual or qualification.</p>
+    <section class="sheet"><h2>Your learning goal</h2><p>${esc(DATA.goal)}</p><h3>What you’ll learn to do</h3><ol class="objectives">${DATA.objectives.map(o=>`<li>${esc(o)}</li>`).join("")}</ol></section>
+    <section class="sheet"><h2>One collision, continuing risk</h2>${para(DATA.core)}${diagram()}</section>
+    <section class="sheet"><h2>Read the mission terms</h2><p><strong>OBS</strong> identifies a research observation. <strong>AV</strong> identifies an avoidance option. <strong>P</strong> identifies a pass.</p><p>A <strong>focused review</strong> examines a specific debris concern. <strong>Reassessment</strong> revisits the evidence after conditions change.</p><p class="small muted">The report times belong to the mission scenario. You are not answering against a timer.</p></section>
+    <section class="sheet"><p class="eyebrow">Worked example · No answer to submit</p><h2>When the schedule changes</h2>${para(DATA.model)}${guide(DATA.modelReason)}</section>
+    <p>Choose your case order. Complete each decision, its feedback, and its check before taking the final assessment.</p><div class="actions">${button("Choose a case","prepare-done","","primary end")}</div>`;
+}
+function viewCases(){
+  return `<p class="eyebrow">Three independent cases</p><h1 id="viewTitle" tabindex="-1">Choose your next case</h1>${guide("Each case starts with its own mission report. Choose any order; complete all three before the final assessment.")}
+    <p><strong>${S.cases.filter(c=>c.done).length} of 3 cases complete</strong></p>
+    ${DATA.cases.map((c,i)=>{const s=S.cases[i],started=!!(s.decision||s.draft.action||s.draft.reason);return `<section class="sheet casecard"><span class="status">${s.done?"Complete":started?"In progress":"Not started"}</span><h2>Case ${i+1}: ${esc(c.title)}</h2>${para(c.prompt)}${button(s.done?"Review case":started?"Resume case":"Open case","case-open",`data-index="${i}" aria-label="${s.done?"Review":started?"Resume":"Open"} case ${i+1}: ${esc(c.title)}"`)}</section>`;}).join("")}
+    ${allCases()?`<div class="actions">${button(S.examStarted?"Review assessment":"Bring the cases together",S.examStarted?"review-open":"debrief-open","","primary end")}</div>`:`<p class="small muted">The debrief and final assessment become available after all three cases are complete.</p>`}`;
+}
+function viewCase(){
+  const i=S.caseIndex,c=DATA.cases[i],s=S.cases[i],checking=s.feedbackRead;
+  let earlier="";
+  if(checking){
+    earlier=`<details><summary>${i===2?"Earlier report and decision · 13:10":"Your submitted decision and feedback"}</summary><div class="detailbody">${i===2?`<p><strong>Earlier evidence:</strong> The 13:25 update below replaces the earlier approval for OBS-B.</p>${report(c.id,"Earlier report")}`:""}${caseFeedback(i)}</div></details>`;
+  }
+  let task="";
+  if(!s.decision){
+    task=`<section class="task"><p class="eyebrow">Decision</p><h2 id="taskTitle" tabindex="-1">${esc(c.prompt)}</h2>${answerForm(pairQuestion(c),s.draft,"decision","Submit recommendation and reason")}</section>`;
+  }else if(!checking){
+    task=`<section class="task"><p class="eyebrow">Decision feedback</p><h2 id="taskTitle" tabindex="-1">What follows from your choices</h2>${caseFeedback(i)}<p class="small muted">Your submitted choices are recorded. The check is the same for every recommendation.</p><div class="actions">${button("Continue to the case check","check-open","","primary end")}</div></section>`;
+  }else if(s.check===null){
+    const q=DATA.checks[i];
+    task=`<section class="task"><p class="eyebrow">Knowledge check · Not scored</p><h2 id="taskTitle" tabindex="-1">${i===0?"Check the evidence":i===1?"Connect responses to effects":"Reconsider the changed forecast"}</h2>${i===2?"<p>Use the new report. The earlier approval for OBS-B no longer applies.</p>":""}${q.type==="match"?para(q.prompt):""}${answerForm(q,s.checkDraft,"check")}</section>`;
+  }else{
+    task=`<section class="task"><p class="eyebrow">Knowledge-check feedback · Not scored</p><h2 id="taskTitle" tabindex="-1">Review the evidence</h2>${checkFeedback(i)}<p class="small muted">This check does not require a retry. Review the feedback before continuing.</p><div class="actions">${button(s.done?"Return to cases":"Complete case and return to cases","case-done","","primary end")}</div></section>`;
+  }
+  return `<p class="eyebrow">Case ${i+1} of 3 · ${s.done?"Complete":checking?"Check understanding":s.decision?"Review your decision":"Make a recommendation"}</p><h1 id="viewTitle" tabindex="-1">${esc(c.title)}</h1>${reference()}${earlier}
+    ${report(i===2&&checking?"update":c.id,i===2&&checking?"New evidence · Use this report":"Current report")}
+    <p class="terms">OBS = observation · AV = avoidance option · P = pass</p>${task}`;
+}
+function viewDebrief(){
+  return `<p class="eyebrow">All three cases complete</p><h1 id="viewTitle" tabindex="-1">Bring the decisions together</h1>
+    <section class="sheet"><h2>Different evidence, different responses</h2><p>Incomplete evidence supported focused review. An evaluated option with an open decision window supported protection. A separately approved activity could continue while later risk remained under review. A changed forecast required reassessment of the affected observation.</p><h3>Carry these questions forward</h3><ul><li>What is the concern?</li><li>Has the response been evaluated for these conditions?</li><li>Is there time to act?</li><li>Does an earlier assessment still cover the activity?</li></ul></section>
+    <section class="sheet"><h2>4 questions · 5 points</h2><p>Question 2 has two parts: a recommendation and a reason. Each is worth one point and they are scored separately.</p>${scoreMap()}
+    <p>Each question has its own report. Submit one question at a time. You cannot change a submitted answer. Feedback appears after all four questions are submitted.</p><p>You’ll then review every question. For each question or part you miss, answer a new practice question using the feedback. Practice is not scored and does not change your original result.</p><p>There is no minimum original score. Complete all reviews and answer each assigned practice question correctly to receive the completion certificate.</p>
+    <div class="actions">${button("Start assessment","exam-start","","primary end")}</div></section>`;
+}
+function viewExam(){
+  const i=S.examIndex,q=DATA.assessment[i],a=S.exam[i];
+  let task;
+  if(a===null)task=`<h2 id="taskTitle" tabindex="-1">${q.type==="pair"?esc(q.prompt):"Your response"}</h2>${q.type==="multi"?"<p class='small muted'>Select both correct details to earn the one point; there is no partial point.</p>":""}${answerForm(q,S.examDraft[i],"exam",q.type==="pair"?"Submit both parts":"Submit answer",true)}`;
+  else task=`<h2 id="taskTitle" tabindex="-1">Response recorded</h2>${q.type==="pair"?`${original({options:q.actions},a.action,"Your recommendation")}${original({options:q.reasons},a.reason,"Your reason")}`:original(q,a,"Your submitted answer")}<p>You’ll see feedback after all four questions are submitted.</p><div class="actions">${button(i===3?"Review all four questions":"Next question","exam-next","","primary end")}</div>`;
+  return `<p class="eyebrow">Final assessment · Question ${i+1} of 4</p><h1 id="viewTitle" tabindex="-1">${esc(q.title)}</h1><p><strong>${q.slots.length} ${q.slots.length===1?"point":"points"}</strong>${i===1?" · 2A Recommendation: 1 point · 2B Reasoning: 1 point":""}</p>
+    ${report(q.report,"Assessment evidence")}<p class="terms">OBS = observation · AV = avoidance option · P = pass</p><section class="sheet">${task}</section>`;
+}
+function reviewPart(k){
+  const r=DATA.review[k],q=DATA.assessment[r.q],all=S.exam[r.q],score=componentScores()[k];
+  const a=r.field==="action"?all.action:r.field==="reason"?all.reason:all;
+  const opts=r.field==="action"?q.actions:r.field==="reason"?q.reasons:q.options;
+  const key=r.field==="action"?q.actionKey:r.field==="reason"?q.reasonKey:q.key;
+  const wrong=(Array.isArray(a)?a:[a]).filter(id=>r.specific[id]);
+  return `<section class="part"><h3>${esc(r.label)} · ${score} of 1 point</h3><span class="status ${score?"":"needs"}">${score?"Correct":"Needs review"}</span>${original({options:opts},a,r.field==="action"?"Your original recommendation":r.field==="reason"?"Your original reason":"Your original answer")}
+    ${score?para(r.correct):`<h4>Supported response</h4>${(Array.isArray(key)?key:[key]).map(id=>para(id+". "+choiceText(opts,id))).join("")}${para(r.why)}${wrong.map(id=>para(r.specific[id])).join("")}`}</section>`;
+}
+function practiceLaunch(i){
+  const needs=needed(i),left=pending(i);
+  if(!left.length)return `<p class="goal"><strong>${needs.length?"Practice complete.":"No practice needed for this question."}</strong> ${i===3?"Finish the review when all four question reviews are complete.":"Select Next review when you’re ready."}</p>`;
+  const names=left.map(k=>DATA.review[k].label).join(" and ");
+  return `<section class="practiceintro"><h3>Practice before you continue</h3><p><strong>${esc(names)}</strong></p>${left.map(k=>para(DATA.practice[k].purpose)).join("")}<p>Answer ${left.length===1?"one new question":"two new questions"} using the report and feedback. Answer correctly to continue; you’ll get guidance and another try if needed. Your original answers and score will not change.</p>${button("Start practice","practice-start")}</section>`;
+}
+function currentPractice(){return S.practiceIndex[S.reviewIndex];}
+function practiceView(i){
+  const k=currentPractice(),q=DATA.practice[k],p=S.practice[k],done=passed(k),last=p.attempts[p.attempts.length-1];
+  const count=needed(i),remaining=pending(i);
+  return `<section class="sheet"><p class="eyebrow">Guided practice · Not scored</p><h2 id="taskTitle" tabindex="-1">${esc(DATA.review[k].label)}: practice</h2>
+    <p class="small muted">Practice ${count.indexOf(k)+1} of ${count.length} for this review. Your original answer and score stay unchanged.</p>
+    ${done?original(q,last,"Your practice answer"):`<form id="practiceForm" novalidate><p>Use the report above and the original feedback to answer this new question.</p>${fieldOptions(q,p.draft,"practice")}<p id="practiceError" class="error" role="alert" tabindex="-1" hidden></p><div class="actions"><button type="submit" class="primary">Check answer</button>${button("Review original feedback","practice-back", "", "quiet")}</div></form>`}
+    ${last?`<section class="feedback ${done?"":"needs"}"><h3 id="practiceFeedback" tabindex="-1">${done?"Practice question complete":"Not yet. Take another look."}</h3>${para(q.feedback[last])}${done?"":"<p>Choose another answer, then select Check answer.</p>"}</section>`:""}
+    ${done?(remaining.length?`<div class="actions">${button("Next practice question","practice-next","","gold end")}</div>`:`<p class="goal">All practice for this question is complete. ${i===3?"Select Finish review after completing all four reviews.":"Select Next review below when you’re ready."}</p>`):""}
+  </section>`;
+}
+function viewReview(){
+  const i=S.reviewIndex,q=DATA.assessment[i],scores=componentScores();
+  const practiceMode=S.practiceVisible[i];
+  if(!practiceMode)S.reviewSeen[i]=true;
+  const assigned=scores.filter(v=>v===0).length;
+  const complete=DATA.practice.filter((q,k)=>passed(k)).length;
+  const canNext=readyReview(i)&&(i<3||[0,1,2].every(j=>S.reviewDone[j]));
+  const hint=pending(i).length?(practiceMode?"Complete the practice above before continuing.":"Select Start practice in the question feedback before continuing."):
+    i===3&&!canNext?"Complete the other reviews using the numbered buttons, then return here to finish.":i===3?"Next: recap and certificate.":`Next: review Question ${i+2}.`;
+  const mismatch=i===1&&scores[1]!==scores[2]?(scores[1]?"Your recommendation fits the report, but your reason does not. Practice why the changed encounter time needs reassessment.":"Your reason fits the evidence, but your recommendation does not follow it. Practice choosing the next step that uses that reasoning."):"";
+  return `<p class="eyebrow">Assessment complete · Review every question</p><h1 id="viewTitle" tabindex="-1">Your results and review</h1>
+    <p class="small muted">Original assessment score<span class="score">${totalScore()} of 5 points</span><strong>4 questions · 5 points</strong></p>
+    <p class="small">Reviews complete: ${S.reviewDone.filter(Boolean).length} of 4. ${assigned?`Practice complete: ${complete} of ${assigned}.`:"No practice assigned."}</p>
+    <nav class="reviewnav" aria-label="Choose a question review">${DATA.assessment.map((q,j)=>`<button type="button" data-act="review-select" data-index="${j}" ${j===i?'aria-current="step"':""}><strong>Question ${j+1}</strong><small>${q.slots.reduce((n,k)=>n+scores[k],0)} of ${q.slots.length} ${q.slots.length===1?"point":"points"}</small>${j===1?`<small>2A: ${scores[1]}/1 · 2B: ${scores[2]}/1</small>`:""}<small>${S.reviewDone[j]?"Review complete":pending(j).length?"Practice required":"Review required"}</small></button>`).join("")}</nav>
+    ${practiceMode?`<details><summary>Original answer and feedback for Question ${i+1}</summary><div class="detailbody">${q.slots.map(reviewPart).join("")}${mismatch?`<p class="goal">${mismatch}</p>`:""}</div></details>`:""}
+    ${report(q.report,practiceMode?"Use this report for practice":"Question report")}
+    ${practiceMode?practiceView(i):`<section class="sheet"><p class="eyebrow">Original assessment · Question ${i+1} of 4</p><h2 id="taskTitle" tabindex="-1">${esc(q.prompt)}</h2>${q.slots.map(reviewPart).join("")}${mismatch?`<p class="goal">${mismatch}</p>`:""}${practiceLaunch(i)}</section>`}
+    <nav class="reviewfooter" aria-label="Review navigation"><div class="actions">${button("Previous review","review-previous",i===0?"disabled":"")}${button(i===3?"Finish review":"Next review","review-next",`${canNext?"":"disabled"} aria-describedby="reviewHint"`,"primary end")}</div><p id="reviewHint" class="helper">${hint}</p></nav>`;
+}
+function certificateMarkup(){
+  const date=new Date(S.completedAt).toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"});
+  return `<section class="certificate"><p class="eyebrow">Kessler Syndrome Primer</p><h2>Certificate of completion</h2><p>Presented to</p><p class="person">${esc(S.name.trim()||"The participant")}</p><p>For completing the introductory briefing, all three decision cases and knowledge checks, the final assessment, feedback review, and any required follow-up practice.</p><p><strong>${esc(date)}</strong></p><p class="small">Developed by Monolith Learning Systems</p><p class="qualifier">This certificate records completion, not mastery or operational qualification.</p></section>`;
+}
+function viewClosing(){
+  return `<p class="eyebrow">All required reviews and practice complete</p><h1 id="viewTitle" tabindex="-1">Carry the reasoning forward</h1>${guide("You chose a reason as well as a recommendation because the action must follow from the evidence in the report.")}
+    <section class="sheet"><h2>What stays with you</h2><p>Avoiding one encounter does not remove the remaining debris. When a forecast changes, an earlier assessment may no longer cover the activity you are planning.</p><h3>Before your next class or simulation</h3><p>Explain one decision in your own words. Which details supported it? What still needed checking? Bring any remaining question to your instructor.</p><p class="small muted">Optional reflection for your next class or simulation.</p></section>
+    <section class="sheet"><h2>Record your completion</h2><p>Your certificate records completion of the lesson and any required practice. It does not establish mastery or qualify you to make operational decisions independently.</p><label class="namefield">Name on certificate (optional)<input id="learnerName" type="text" maxlength="80" autocomplete="name" value="${esc(S.name)}"></label><div class="actions">${button("Finish lesson","finish","","primary end")}</div></section>`;
+}
+function viewCertificate(){
+  return `<p class="eyebrow">Lesson complete</p><h1 id="viewTitle" tabindex="-1">Your completion certificate</h1>${certificateMarkup()}<div class="actions">${button("Print certificate","print", "", "primary")}${button("Review answers","review-open")}</div><p class="helper">Printing is optional. You may close this file when you are finished.</p>`;
+}
+function viewResume(){
+  const s=pendingResume;
+  return `<p class="eyebrow">Saved work found</p><h1 id="viewTitle" tabindex="-1">Continue where you left off?</h1><section class="sheet"><p>Cases complete: <strong>${s.cases.filter(c=>c.done).length} of 3</strong>. Assessment answers recorded: <strong>${s.exam.filter(a=>a!==null).length} of 4</strong>.</p><p>${s.completedAt?"Your completed certificate is also saved.":"Your original answers and unfinished practice will be preserved."}</p><div class="actions">${button("Resume saved progress","resume","","primary")}${button("Start a new attempt","reset-request")}</div></section>`;
+}
+function renderTracking(){
+  const review=S.page==="review",p=S.page;
+  const steps=[['Prepare',S.briefingDone?'Complete':'Briefing',S.briefingDone,p==='prepare'],['Cases',`${S.cases.filter(c=>c.done).length} of 3`,allCases(),['cases','case','debrief'].includes(p)],['Assess',`${S.exam.filter(a=>a!==null).length} of 4`,allExam(),p==='assessment'],['Review',`${S.reviewDone.filter(Boolean).length} of 4`,reviewsComplete(),review||p==='closing'||p==='certificate']];
+  $("tracking").innerHTML=pendingResume?"":`<ol class="milestones">${steps.map(([title,desc,done,active])=>`<li class="${active?'current':done?'complete':''}" ${active?'aria-current="step"':''}><strong>${title}</strong><span>${esc(desc)}</span></li>`).join("")}</ol>`;
+  const locked=S.examStarted&&!reviewsComplete();
+  $("toplinks").innerHTML=pendingResume?"":`${S.briefingDone&&!locked&&p!=='cases'?button('Case index','cases-open','','quiet'):''}${S.briefingDone&&!locked&&p!=='prepare'?button('Revisit briefing','briefing-open','','quiet'):''}`;
+}
+function render(focus="viewTitle"){
+  const views={prepare:viewPrepare,cases:viewCases,case:viewCase,debrief:viewDebrief,assessment:viewExam,review:viewReview,closing:viewClosing,certificate:viewCertificate};
+  $("main").innerHTML=pendingResume?viewResume():views[S.page]();
+  renderTracking();
+  $("printArea").innerHTML=S.completedAt&&completionEligible()?certificateMarkup():"";
+  save();
+  if(focus)focusTo(focus);
+}
+function changePage(page,focus="viewTitle"){
+  errorText="";S.page=page;render(focus);
+}
+function currentAnswerContext(){
+  if(S.page==="case"){
+    const i=S.caseIndex,c=S.cases[i];
+    if(!c.decision)return {q:pairQuestion(DATA.cases[i]),kind:"decision",draft:c.draft};
+    if(c.feedbackRead&&c.check===null)return {q:DATA.checks[i],kind:"check",draft:c.checkDraft};
+  }
+  if(S.page==="assessment"&&S.exam[S.examIndex]===null)return {q:DATA.assessment[S.examIndex],kind:"exam",draft:S.examDraft[S.examIndex]};
+  return null;
+}
+function readForm(q,form){
+  const f=new FormData(form);
+  if(q.type==="pair")return {action:f.get("action")||"",reason:f.get("reason")||""};
+  if(q.type==="multi")return f.getAll("selected");
+  if(q.type==="match")return [0,1,2].map(i=>f.get("row"+i)||"");
+  return f.get("selected")||"";
+}
+function captureAnswer(){
+  const ctx=currentAnswerContext(),form=$("answerForm");if(!ctx||!form)return;
+  const a=readForm(ctx.q,form);
+  if(ctx.kind==="exam")S.examDraft[S.examIndex]=a;
+  else if(ctx.kind==="decision")S.cases[S.caseIndex].draft=a;
+  else S.cases[S.caseIndex].checkDraft=a;
+  if($("selectionCount"))$("selectionCount").textContent=`${a.length} of 2 selected.`;
+  if($("formError")){errorText="";$("formError").hidden=true;form.removeAttribute("aria-invalid");}
+  save();
+}
+function submitAnswer(){
+  const ctx=currentAnswerContext(),form=$("answerForm");if(!ctx||!form)return;
+  const a=readForm(ctx.q,form);
+  if(!validAnswer(ctx.q,a)){
+    errorText=ctx.q.type==="pair"?"Choose one recommendation and one reason before submitting.":ctx.q.type==="multi"?"Select exactly two details before submitting.":ctx.q.type==="match"?"Choose an effect for each of the three responses.":"Choose an answer before submitting.";
+    $("formError").textContent=errorText;$("formError").hidden=false;form.setAttribute("aria-invalid","true");focusTo("formError");return;
+  }
+  captureAnswer();
+  if(ctx.kind==="decision")S.cases[S.caseIndex].decision=fixedAnswer(a);
+  else if(ctx.kind==="check")S.cases[S.caseIndex].check=fixedAnswer(a);
+  else S.exam[S.examIndex]=fixedAnswer(a);
+  errorText="";render("taskTitle");announce(ctx.kind==="exam"?"Response recorded. Feedback follows all four questions.":"Response recorded. Review the feedback.");
+}
+function markReview(){if(S.page==="review"&&readyReview(S.reviewIndex))S.reviewDone[S.reviewIndex]=true;}
+function selectReview(i){
+  if(!allExam()||!Number.isInteger(i)||i<0||i>3)return;
+  if(i!==S.reviewIndex)markReview();
+  S.reviewIndex=i;S.practiceVisible[i]=false;changePage("review","taskTitle");
+}
+function startPractice(){
+  const i=S.reviewIndex;if(S.page!=="review"||!allExam()||!S.reviewSeen[i])return;
+  const k=pending(i)[0];if(k===undefined)return;
+  S.practiceIndex[i]=k;S.practiceVisible[i]=true;render("taskTitle");
+}
+function checkPractice(){
+  const i=S.reviewIndex,k=currentPractice();
+  if(S.page!=="review"||!S.practiceVisible[i]||!needed(i).includes(k)||passed(k))return;
+  const form=$("practiceForm"),a=new FormData(form).get("practice")||"",q=DATA.practice[k];
+  if(!inOptions(q.options,a)){
+    $("practiceError").textContent="Choose an answer before selecting Check answer.";$("practiceError").hidden=false;focusTo("practiceError");return;
+  }
+  S.practice[k].draft=a;S.practice[k].attempts.push(a);render("practiceFeedback");
+  announce(passed(k)?"Practice question complete. Your original score is unchanged.":"Use the feedback to choose another answer.");
+}
+function reset(){
+  pendingResume=null;S=initialState();invalidSave=false;errorText="";
+  try{localStorage.removeItem(STORAGE_KEY);}catch(e){storageOK=false;}
+  $("resetConfirm").hidden=true;$("help").open=false;storageMessage();render();
+}
+function handle(act,el){
+  if(pendingResume&&!["resume","reset-request","reset-cancel","reset-confirm"].includes(act))return;
+  const locked=S.examStarted&&!reviewsComplete();
+  switch(act){
+    case "prepare-done":if(!locked){S.briefingDone=true;changePage("cases");}break;
+    case "briefing-open":if(!locked)changePage("prepare");break;
+    case "cases-open":if(S.briefingDone&&!locked)changePage("cases");break;
+    case "case-open":{
+      const i=Number(el.dataset.index);
+      if(S.briefingDone&&!locked&&Number.isInteger(i)&&i>=0&&i<3){S.caseIndex=i;changePage("case");}break;
+    }
+    case "check-open":if(S.page==="case"&&S.cases[S.caseIndex].decision){S.cases[S.caseIndex].feedbackRead=true;render("taskTitle");}break;
+    case "case-done":if(S.page==="case"&&S.cases[S.caseIndex].check!==null){S.cases[S.caseIndex].done=true;changePage("cases");}break;
+    case "debrief-open":if(allCases()&&!locked)changePage("debrief");break;
+    case "exam-start":if(allCases()&&S.briefingDone&&!S.examStarted){S.debriefDone=true;S.examStarted=true;S.examIndex=0;changePage("assessment");}break;
+    case "exam-next":if(S.page==="assessment"&&S.exam[S.examIndex]!==null){if(S.examIndex<3){S.examIndex++;render();}else if(allExam()){S.reviewIndex=0;changePage("review");}}break;
+    case "review-open":if(allExam()){S.reviewIndex=0;S.practiceVisible[0]=false;changePage("review");}break;
+    case "review-select":selectReview(Number(el.dataset.index));break;
+    case "review-previous":if(S.page==="review"&&S.reviewIndex>0)selectReview(S.reviewIndex-1);break;
+    case "review-next":{
+      const i=S.reviewIndex;
+      if(S.page!=="review"||!readyReview(i))break;
+      if(i<3){markReview();selectReview(i+1);}
+      else if([0,1,2].every(j=>S.reviewDone[j])){markReview();if(completionEligible())changePage("closing");}
+      break;
+    }
+    case "practice-start":startPractice();break;
+    case "practice-back":if(S.page==="review"){S.practiceVisible[S.reviewIndex]=false;render("taskTitle");}break;
+    case "practice-next":if(S.page==="review"&&S.practiceVisible[S.reviewIndex]&&passed(currentPractice())){const k=pending(S.reviewIndex)[0];if(k!==undefined){S.practiceIndex[S.reviewIndex]=k;render("taskTitle");}}break;
+    case "finish":if(S.page==="closing"&&completionEligible()){S.name=($("learnerName")?.value||"").slice(0,80);if(!S.completedAt)S.completedAt=new Date().toISOString();changePage("certificate");announce("Lesson complete. Your certificate is available.");}break;
+    case "print":if(S.completedAt&&completionEligible())window.print();break;
+    case "resume":if(pendingResume&&validateState(pendingResume)){S=clone(pendingResume);pendingResume=null;freezeOriginals();render();announce("Saved progress restored.");}break;
+    case "reset-request":$("help").open=true;$("resetConfirm").hidden=false;requestAnimationFrame(()=>document.querySelector('[data-act="reset-cancel"]').focus());break;
+    case "reset-cancel":$("resetConfirm").hidden=true;document.querySelector('[data-act="reset-request"]').focus();break;
+    case "reset-confirm":reset();break;
+  }
+}
+document.addEventListener("click",e=>{
+  const b=e.target.closest("button[data-act]");
+  if(b&&!b.disabled&&e.detail<=1)handle(b.dataset.act,b);
+});
+$("main").addEventListener("change",e=>{
+  if(e.target.closest("#answerForm"))captureAnswer();
+  if(e.target.closest("#practiceForm")){
+    const k=currentPractice();if(k!==null&&!passed(k)){S.practice[k].draft=e.target.value;if($("practiceError"))$("practiceError").hidden=true;save();}
+  }
+});
+$("main").addEventListener("input",e=>{if(e.target.id==="learnerName"){S.name=e.target.value.slice(0,80);save();}});
+$("main").addEventListener("submit",e=>{e.preventDefault();if(e.target.id==="answerForm")submitAnswer();else if(e.target.id==="practiceForm")checkPractice();});
+window.addEventListener("pagehide",save);
+document.addEventListener("visibilitychange",()=>{if(document.hidden)save();});
+checkSaved();render(null);
+
+</script>
+</body>
+</html>
